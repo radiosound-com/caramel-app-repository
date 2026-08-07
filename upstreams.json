@@ -1,0 +1,12 @@
+{
+  "$schema": "./schemas/upstreams-v1.schema.json",
+  "packages": {
+    "net.osmand.dev": {
+      "display_name": "OsmAnd for Caramel Vanilla",
+      "repository": "osmandapp/OsmAnd",
+      "branch": "master",
+      "last_reviewed_commit": "76af8ab62b05d35897c461b233d27726206b4df6",
+      "review_notes": "Rebase the Automotive fork, rebuild with the dedicated OsmAnd signer, and rerun parked/full-UI and car-app-template tests before publishing."
+    }
+  }
+}

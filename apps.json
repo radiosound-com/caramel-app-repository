@@ -1,0 +1,40 @@
+{
+  "$schema": "./schemas/apps-v1.schema.json",
+  "repository": {
+    "name": "Caramel App Repository",
+    "description": "First-party Android Automotive releases maintained by Radio Sound.",
+    "url": "https://caramel-vanilla-store.apps.radiosound.com/fdroid/repo"
+  },
+  "packages": {
+    "com.radiosound.caramelstore": {
+      "display_name": "Caramel Store",
+      "summary": "A curated application catalog for Caramel Vanilla vehicles.",
+      "description": "Browse approved Automotive applications, inspect compatibility findings, and install verified APK releases with Android's user-controlled Package Installer.",
+      "categories": ["System"],
+      "license": "Apache-2.0",
+      "source_code": "https://github.com/radiosound-com/android_packages_apps_Caramel_Store",
+      "issue_tracker": "https://github.com/radiosound-com/android_packages_apps_Caramel_Store/issues",
+      "trusted_signing_certificate_sha256": "863294df6a611624f18d3a1c8d598d509d950340af06c3880749ff6466dcfbb3",
+      "manifest_findings": {
+        "automotive_candidate": true,
+        "automotive_feature": true,
+        "car_app_service": false
+      }
+    },
+    "net.osmand.dev": {
+      "display_name": "OsmAnd for Caramel Vanilla",
+      "summary": "Offline maps and Automotive navigation for Caramel Vanilla.",
+      "description": "Radio Sound's Automotive build of OsmAnd, including a car-app templates entry point and the full parked-only interface for map downloads and configuration.",
+      "categories": ["Navigation"],
+      "license": "GPL-3.0-or-later",
+      "source_code": "https://github.com/radiosound-com/OsmAnd/tree/caramel-vanilla-osmand-aaos",
+      "issue_tracker": "https://github.com/radiosound-com/OsmAnd/issues",
+      "trusted_signing_certificate_sha256": "729114e97e3dbbf4d5d300fbf40bd72f99142ae15fdc5bfe57adc37b63dc4a18",
+      "manifest_findings": {
+        "automotive_candidate": true,
+        "automotive_feature": false,
+        "car_app_service": true
+      }
+    }
+  }
+}

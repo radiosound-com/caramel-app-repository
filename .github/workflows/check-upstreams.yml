@@ -1,0 +1,45 @@
+name: check upstream applications
+
+on:
+  schedule:
+    - cron: "17 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - id: upstreams
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python tools/check_upstreams.py
+          --report "$RUNNER_TEMP/upstream-report.md"
+          --github-output "$GITHUB_OUTPUT"
+      - name: Create or refresh review issue
+        if: steps.upstreams.outputs.has_updates == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue_number=$(gh issue list --state open --json number,title --jq '.[] | select(.title == "Upstream application updates available") | .number' | head -n 1)
+          if [ -n "$issue_number" ]; then
+            gh issue edit "$issue_number" --body-file "$RUNNER_TEMP/upstream-report.md"
+          else
+            gh issue create --title "Upstream application updates available" --body-file "$RUNNER_TEMP/upstream-report.md"
+          fi
+      - name: Close completed review issue
+        if: steps.upstreams.outputs.has_updates != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue list --state open --json number,title --jq '.[] | select(.title == "Upstream application updates available") | .number' | while read -r issue_number; do
+            gh issue close "$issue_number" --comment "All tracked upstream heads are now recorded as reviewed."
+          done

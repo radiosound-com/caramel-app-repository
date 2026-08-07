@@ -1,0 +1,11 @@
+.venv/
+build/
+repo/
+archive/
+unsigned/
+*.jks
+*.p12
+*.pem
+*.pass
+__pycache__/
+!keys/caramel-index-signing-public.pem

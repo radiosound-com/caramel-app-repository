@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://caramel-vanilla-store.apps.radiosound.com/fdroid/schemas/caramel-index-v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "repository", "packages"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "repository": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": {"type": "string"},
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"}
+      }
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["package_name", "version_code", "version_name", "downloaded_size", "sha256", "apk_url", "signing_certificate_sha256", "metadata"],
+        "properties": {
+          "package_name": {"type": "string", "pattern": "^[A-Za-z0-9_.]+$"},
+          "version_code": {"type": "integer", "minimum": 1},
+          "version_name": {"type": "string"},
+          "downloaded_size": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "apk_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "signing_certificate_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "metadata": {"type": "object"}
+        }
+      }
+    }
+  }
+}

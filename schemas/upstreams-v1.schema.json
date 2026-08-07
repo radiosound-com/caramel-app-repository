@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://caramel-vanilla-store.apps.radiosound.com/fdroid/schemas/upstreams-v1.schema.json",
+  "type": "object",
+  "required": ["packages"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "packages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["display_name", "repository", "branch", "last_reviewed_commit", "review_notes"],
+        "properties": {
+          "display_name": {"type": "string", "minLength": 1},
+          "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+          "branch": {"type": "string", "minLength": 1},
+          "last_reviewed_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+          "review_notes": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

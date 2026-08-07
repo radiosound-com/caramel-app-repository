@@ -1,0 +1,10 @@
+repo_url: https://caramel-vanilla-store.apps.radiosound.com/fdroid/repo
+repo_name: Caramel App Repository
+repo_description: First-party Android Automotive releases maintained by Radio Sound.
+archive_older: 0
+make_current_version_link: false
+keystore: {env: FDROID_KEYSTORE}
+keystorepass: {env: FDROID_KEY_STORE_PASS}
+keypass: {env: FDROID_KEY_PASS}
+repo_keyalias: caramel-fdroid
+keydname: CN=Caramel App Repository, OU=Repository Index, O=Radio Sound, C=US
