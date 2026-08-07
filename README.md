@@ -92,6 +92,8 @@ workflow compares those pins with GitHub and creates or refreshes one review
 issue when a branch moves. It never downloads an APK, invokes a release key,
 builds a package, or publishes repository content. After a reviewed rebase,
 update `last_reviewed_commit` in the same change that records the test result.
+The repository or organization must enable GitHub Actions before the scheduled
+workflow can run; `workflow_dispatch` is available for an initial smoke test.
 
 Run the same check locally with:
 
