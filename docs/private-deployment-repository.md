@@ -8,6 +8,8 @@ to them:
 
 * `radiosound-com/android_packages_apps_Caramel_Store@main`
 * `radiosound-com/OsmAnd@caramel-vanilla-osmand-aaos`
+* `osmandapp/OsmAnd-resources@master`, checked out as the sibling `resources`
+  directory required by the OsmAnd build
 
 This is especially useful for the OsmAnd fork: the public branch stays easy to
 review and contribute upstream, while the private deployment repository owns
@@ -25,7 +27,8 @@ the Automotive build task, dedicated Caramel signing, versioning, and upload.
 4. Create a protected `production-release` environment and add the release
    keystores/passwords, detached-index private key/password, and narrowly
    scoped object-store publisher credential as environment secrets.
-5. Build Caramel Store with its release script. Build OsmAnd with
+5. Check out the pinned `OsmAnd-resources` revision beside the OsmAnd checkout.
+   Build Caramel Store with its release script. Build OsmAnd with
    `:OsmAnd:assembleNightlyFreeOpenglFatAutomotive`, then sign the resulting
    `net.osmand.dev` APK with its approved Caramel certificate before invoking
    `tools/build_repository.py`.
