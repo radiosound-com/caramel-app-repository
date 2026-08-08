@@ -79,6 +79,14 @@ The signing keys remain on the controlled release workstation/build host.
 Kubernetes and the public object store contain only public keys and signed
 artifacts.
 
+## Private deployment repositories
+
+Keep GitHub Actions that can access release keys and production upload
+credentials out of this public repository. The setup pattern for a private
+polling publisher, including the `OsmAnd@caramel-vanilla-osmand-aaos` seam and
+dedicated self-hosted runner, is documented in
+[`docs/private-deployment-repository.md`](docs/private-deployment-repository.md).
+
 ## Release policy
 
 Every release must increase Android `versionCode`, pass the app's tests, pass
