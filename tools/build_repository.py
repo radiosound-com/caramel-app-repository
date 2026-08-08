@@ -259,7 +259,11 @@ def main(argv: list[str] | None = None) -> int:
         shutil.rmtree(output)
     (output / "repo").mkdir(parents=True)
 
-    shutil.copy2(root / "config.yml", output / "config.yml")
+    generated_config = output / "config.yml"
+    shutil.copy2(root / "config.yml", generated_config)
+    with generated_config.open("a", encoding="utf-8") as config:
+        config.write(f"\napksigner: {args.apksigner}\n")
+    generated_config.chmod(0o600)
     inspected: list[dict[str, Any]] = []
     seen: set[str] = set()
     for declared_package, apk in args.apk:
