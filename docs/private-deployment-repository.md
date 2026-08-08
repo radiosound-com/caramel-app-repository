@@ -26,7 +26,7 @@ the Automotive build task, dedicated Caramel signing, versioning, and upload.
    keystores/passwords, detached-index private key/password, and narrowly
    scoped object-store publisher credential as environment secrets.
 5. Build Caramel Store with its release script. Build OsmAnd with
-   `:OsmAnd:assembleNightlyFreeAutomotive`, then sign the resulting
+   `:OsmAnd:assembleNightlyFreeLegacyFatAutomotive`, then sign the resulting
    `net.osmand.dev` APK with its approved Caramel certificate before invoking
    `tools/build_repository.py`.
 6. Download unchanged first-party APKs from the current catalog, assemble both
